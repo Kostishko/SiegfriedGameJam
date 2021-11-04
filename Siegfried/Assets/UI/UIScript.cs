@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UIScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] UIBar healthBar;
+    [SerializeField] UIBar manaBar;
+
     void Start()
     {
-        
+        var characterState = FindObjectOfType<CharacterState>();
+        characterState.OnHealthChange += healthBar.UpdateBar;
+        characterState.OnManaChange += manaBar.UpdateBar;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
