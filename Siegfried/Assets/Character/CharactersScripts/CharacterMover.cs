@@ -32,6 +32,10 @@ public class CharacterMover : MonoBehaviour
         _movement.y = Input.GetAxisRaw("Vertical");
         _movement = _movement.normalized;
 
+        var localScale = transform.localScale;
+        localScale.x = _movement.x < 0 ? -1 : 1;
+        transform.localScale = localScale;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isDashButtonDown = true;
