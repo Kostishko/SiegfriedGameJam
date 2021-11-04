@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class CharacterFight : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float _attackOffset = 5f;
+
+    private void Update()
     {
-        
+        HandleAttack();
+    }
+    private void HandleAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseDir = (mousePosition - transform.position).normalized;
+
+            Vector3 attackPosition = transform.position + mouseDir * _attackOffset;
+
+            Vector3 attackDir = mouseDir;
+
+            //float attackRange = 10f;
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
