@@ -100,7 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f86a708f4e5de54cb88c880c786f0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  _moveSpeed: 5
+  _dashDistance: 2
+  _dashLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _dashEffect: {fileID: 169907532462986002, guid: eaee5513f33928644a68f285592d0532, type: 3}
 --- !u!50 &5012496683682458398
 Rigidbody2D:
   serializedVersion: 4
