@@ -6,18 +6,33 @@ using UnityEngine;
 public class CharacterState : MonoBehaviour
 {
     public event Action<int, int> OnHealthChange;
+    public event Action<int, int> OnManaChange;
     public event Action OnDie;
 
     #region HP
-    [SerializeField] private int maxHealth;
-    private int health;
+    [SerializeField] private int _maxHealth;
+    private int _health;
     public int Health
     {
-        get => health;
+        get => _health;
         private set
         {
-            health = Mathf.Clamp(value, 0, maxHealth);
-            OnHealthChangeHandler();
+            _health = Mathf.Clamp(value, 0, _maxHealth);
+            OnHealthChange?.Invoke(_health, _maxHealth);
+        }
+    }
+    #endregion
+
+    #region Mana
+    [SerializeField] private int _maxMana;
+    private int _mana;
+    public int Mana
+    {
+        get => _mana;
+        private set
+        {
+            _mana = Mathf.Clamp(value, 0, _maxMana);
+            OnManaChange?.Invoke(_mana, _maxMana);
         }
     }
     #endregion
@@ -29,13 +44,24 @@ public class CharacterState : MonoBehaviour
 
     void Start()
     {
-        Health = maxHealth;
+        Health = _maxHealth;
+        Mana = _maxMana;
     }
 
-    private void OnHealthChangeHandler()
+    public void TakeDamage(int damage)
     {
-        OnHealthChange?.Invoke(Health, maxHealth);
+        Health -= damage;
+
         if (Health == 0)
             OnDie?.Invoke();
+    }
+
+    public void TakeHeal(int heal)
+    {
+        Health += heal;
+    }
+    public void TakeMana(int mana)
+    {
+        Mana += mana;
     }
 }
