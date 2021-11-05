@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 100f;
+    public int damage = 3;
 
     public void Setup(Vector2 direction)
     {
@@ -18,6 +19,7 @@ public class Bullet : MonoBehaviour
         Enemy target = other.GetComponent<Enemy>();
         if (target != null)
         {
+            target.takeDamage(damage);
             Destroy(gameObject);
         }
     }
