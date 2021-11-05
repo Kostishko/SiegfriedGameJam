@@ -1272,6 +1272,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3216652429352378180, guid: 84ad450b8082cba438923b0ba5a8cd33, type: 3}
+      propertyPath: _plume
+      value: 
+      objectReference: {fileID: 3687596310448813383, guid: c3bc709e2ada620418a2eee8fddd83a4, type: 3}
+    - target: {fileID: 3216652429352378180, guid: 84ad450b8082cba438923b0ba5a8cd33, type: 3}
       propertyPath: _bulletPrefab
       value: 
       objectReference: {fileID: 0}
@@ -1329,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255976051256749104, guid: 84ad450b8082cba438923b0ba5a8cd33, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6743212388127381783, guid: 84ad450b8082cba438923b0ba5a8cd33, type: 3}
@@ -1353,6 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _maxMana: 10
+  _manaRegeneration: 1
   meleeDamage: 0
   rangedDamage: 0
 --- !u!1001 &7207520233628602726
