@@ -6581,7 +6581,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407525872188605434, guid: ff4ee0f227f038649849ce66b6272dcc, type: 3}
       propertyPath: m_Name
-      value: MeleeEnemyProjectile
+      value: RangeEnemyProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 8418588054820141268, guid: ff4ee0f227f038649849ce66b6272dcc, type: 3}
       propertyPath: m_RootOrder
