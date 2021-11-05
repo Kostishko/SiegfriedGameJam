@@ -5,13 +5,15 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
-
+    #region EnemyStats
+    [Header("Enemy Stats")]
+    [SerializeField] private int _damage = 5;
     [SerializeField] private int _maxHealth;
     private int _curHealth;
     public int Health
-    { 
+    {
         get => _curHealth;
-            private set
+        private set
         {
             _curHealth = Mathf.Clamp(value, 0, _maxHealth);
         }
@@ -20,30 +22,37 @@ public class Enemy : MonoBehaviour
     private float _reloadTimer;
     [SerializeField] private float _reloadTime;
 
+    [SerializeField] bool isMelee = true;
+    #endregion
+
+    #region
+    [Header("Enemy states")]
     private bool isReloading;
-
-    private bool isDie=false;
-
-
-    private AIPath _path;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private ParticleSystem _damageParticle;
-    [SerializeField] private ParticleSystem _shootParticle;
-
-
-
-
-    [SerializeField] private int _damage = 5;
-    [SerializeField] private GameObject _playerCharacter;
-
+    private bool isDie = false;    
     public enum EnemyState
     {
         MOVING,
         FIGHT,
         DEAD
     }
-
     private EnemyState _enemyState;
+    #endregion
+
+    #region Animation
+    [Header("Animations")]
+    private AIPath _path;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private ParticleSystem _damageParticle;
+    [SerializeField] private ParticleSystem _shootParticle;
+    [SerializeField] private GameObject _projectile;
+    #endregion
+
+
+
+
+    [SerializeField] private GameObject _playerCharacter;
+
+
     
 
     private void Start()
@@ -54,6 +63,22 @@ public class Enemy : MonoBehaviour
             Debug.Log("Can't Find Character!");
         }
 
+        if (_damageParticle==null)
+        {
+            Debug.Log("damage particle doesn't here!");
+        }
+
+
+        if (_shootParticle == null)
+        {
+            Debug.Log("shoot particle doesn't here!");
+        }
+
+        if (!isMelee&& _projectile==null)
+        {
+            Debug.Log("Projectfile is null");
+        }
+
         _path = GetComponent<AIPath>();
 
 
@@ -62,7 +87,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_path.velocity.x<0.01f && _path.velocity.y<0.01f)
+        if (!isEnemyMoving())
         {
             if (_enemyState == EnemyState.MOVING)
             {
@@ -82,15 +107,41 @@ public class Enemy : MonoBehaviour
             else
             {
                 _reloadTimer = _reloadTime;
-                EnemyMeleeAttack();
+                if (isMelee)
+                {
+                    EnemyMeleeAttack();
+                }
+                else
+                {
+                    EnemyRangeAttack();
+                }
+                
             }
 
 
         }
 
+        if (isEnemyMoving())
+        {
+            if (_enemyState != EnemyState.MOVING)
+            {
+                _enemyState = EnemyState.MOVING;
+            }
+        }
 
     }
 
+    private bool isEnemyMoving ()
+    {
+        if (_path.velocity.x < 0.01f && _path.velocity.y < 0.01f)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     public void takeDamage( int _damage)
     {
@@ -100,12 +151,12 @@ public class Enemy : MonoBehaviour
         {
             isDie = true;
             _path.maxSpeed = 0;
-            // ïðîèãðûø àíèìàöèè ñìåðòè
+            // Ð¿Ñ€Ð¾Ð¸Ð³Ñ€Ñ‹Ñˆ Ð°Ð½Ð¸Ð¼Ð°Ñ†Ð¸Ð¸ ÑÐ¼ÐµÑ€Ñ‚Ð¸
             _enemyState = EnemyState.DEAD;
 
         }
 
-        //ïðîèãðûøü ïàðòèêëåé ïîëó÷åíèÿ óðîíà, â èäåàëå òàêæå àíèìàöèþ ïîëó÷åíèÿ óðîíà
+        //Ð¿Ñ€Ð¾Ð¸Ð³Ñ€Ñ‹ÑˆÑŒ Ð¿Ð°Ñ€Ñ‚Ð¸ÐºÐ»ÐµÐ¹ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ ÑƒÑ€Ð¾Ð½Ð°, Ð² Ð¸Ð´ÐµÐ°Ð»Ðµ Ñ‚Ð°ÐºÐ¶Ðµ Ð°Ð½Ð¸Ð¼Ð°Ñ†Ð¸ÑŽ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ ÑƒÑ€Ð¾Ð½Ð°
 
         _damageParticle.Play();
 
@@ -120,10 +171,6 @@ public class Enemy : MonoBehaviour
     {
 
     }
-
-
-
-
 
 
 }
