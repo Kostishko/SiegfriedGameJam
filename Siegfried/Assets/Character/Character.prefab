@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 9801626239531374b8b75233c6f9a548, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -273,6 +273,10 @@ PrefabInstance:
     - target: {fileID: 8718636476597596745, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
       propertyPath: m_Name
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440797, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
