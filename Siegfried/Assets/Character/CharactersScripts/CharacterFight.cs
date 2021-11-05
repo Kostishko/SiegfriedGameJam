@@ -6,6 +6,12 @@ public class CharacterFight : MonoBehaviour
 {
     [SerializeField] float _attackOffset = 5f;
 
+    private MachineGun _machineGun;
+
+    private void Start()
+    {
+        _machineGun = GetComponentInChildren<MachineGun>();
+    }
     private void Update()
     {
         HandleAttack();
@@ -24,6 +30,15 @@ public class CharacterFight : MonoBehaviour
             //float attackRange = 10f;
 
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        _machineGun.Shoot();
     }
 
 }
