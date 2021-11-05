@@ -57,6 +57,8 @@ public class CharacterState : MonoBehaviour
 
         if (Health == 0)
             OnDie?.Invoke();
+
+
     }
 
     public void TakeHeal(int heal)
