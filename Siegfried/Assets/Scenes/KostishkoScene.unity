@@ -5070,6 +5070,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &757904227 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2851828435366292371, guid: 601a04308384ef64c89dbddb24645e54, type: 3}
+  m_PrefabInstance: {fileID: 4156145624740557215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &761134508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5357,7 +5362,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
@@ -5479,6 +5516,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 112927491138275497, guid: 601a04308384ef64c89dbddb24645e54, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 757904227}
+    - target: {fileID: 112927491138275497, guid: 601a04308384ef64c89dbddb24645e54, type: 3}
+      propertyPath: _maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 112927491138275497, guid: 601a04308384ef64c89dbddb24645e54, type: 3}
+      propertyPath: _reloadTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4156145624568037915, guid: 601a04308384ef64c89dbddb24645e54, type: 3}
       propertyPath: m_RootOrder
       value: 9
