@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 5f;
+   
     [SerializeField] private float _damage = 5f;
     [SerializeField] private GameObject _playerCharacter;
+    
 
 
     private void Start()
