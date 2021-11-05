@@ -9,6 +9,8 @@ public class CharacterState : MonoBehaviour
     public event Action<int, int> OnManaChange;
     public event Action OnDie;
 
+    public CharacterStates state = CharacterStates.Normal;
+
     #region HP
     [SerializeField] private int _maxHealth;
     private int _health;
@@ -39,8 +41,8 @@ public class CharacterState : MonoBehaviour
     #endregion
 
     #region Attack stats
-    public float meleeDamage;
-    public float rangedDamage;
+    public int meleeDamage;
+    //public int rangedDamage;
     #endregion
 
     void Start()
@@ -84,4 +86,10 @@ public class CharacterState : MonoBehaviour
                 Mana += _manaRegeneration;
         }
     }
+}
+
+public enum CharacterStates
+{
+    Normal,
+    MeleeAttack,
 }

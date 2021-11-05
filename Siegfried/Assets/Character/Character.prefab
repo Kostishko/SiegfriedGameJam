@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5012496683682458393}
   - component: {fileID: 5012496683682458392}
-  - component: {fileID: 5012496683682458395}
   - component: {fileID: 5012496683682458398}
+  - component: {fileID: 5012496683682458395}
   - component: {fileID: 5012496683682458399}
   - component: {fileID: 5334270674038037541}
   - component: {fileID: 3216652429352378180}
@@ -90,25 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5012496683682458395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5012496683682458394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f86a708f4e5de54cb88c880c786f0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _dashDistance: 2
-  _dashLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _dashEffect: {fileID: 169907532462986002, guid: eaee5513f33928644a68f285592d0532, type: 3}
-  _dashCost: 5
 --- !u!50 &5012496683682458398
 Rigidbody2D:
   serializedVersion: 4
@@ -130,6 +111,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5012496683682458395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012496683682458394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f86a708f4e5de54cb88c880c786f0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 5
+  _dashDistance: 2
+  _dashLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _dashEffect: {fileID: 169907532462986002, guid: eaee5513f33928644a68f285592d0532, type: 3}
+  _dashCost: 5
 --- !u!95 &5012496683682458399
 Animator:
   serializedVersion: 3
@@ -191,8 +191,8 @@ MonoBehaviour:
   _maxHealth: 20
   _maxMana: 10
   _manaRegeneration: 1
-  meleeDamage: 0
-  rangedDamage: 0
+  meleeDamage: 5
+  rangedDamage: 3
 --- !u!61 &680132748044751995
 BoxCollider2D:
   m_ObjectHideFlags: 0
