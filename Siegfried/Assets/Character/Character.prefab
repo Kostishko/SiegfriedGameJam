@@ -108,6 +108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _dashEffect: {fileID: 169907532462986002, guid: eaee5513f33928644a68f285592d0532, type: 3}
+  _dashCost: 5
 --- !u!50 &5012496683682458398
 Rigidbody2D:
   serializedVersion: 4
@@ -173,6 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackOffset: 5
+  _meleeTimeBetweenAttacks: 1
+  _plume: {fileID: 3687596310448813383, guid: c3bc709e2ada620418a2eee8fddd83a4, type: 3}
 --- !u!114 &6210851385429720201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _maxMana: 10
+  _manaRegeneration: 1
   meleeDamage: 0
   rangedDamage: 0
 --- !u!61 &680132748044751995
