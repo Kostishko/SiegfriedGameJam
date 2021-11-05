@@ -47,7 +47,7 @@ public class MachineGun : Weapon
 
     private void UpdateSorting()
     {
-        if (_mouseDir.y > 0)
+        if (_mouseDir.y > 0.07f)
             _renderer.sortingOrder = _characterOrder - 1;
         else
             _renderer.sortingOrder = _characterOrder + 1;

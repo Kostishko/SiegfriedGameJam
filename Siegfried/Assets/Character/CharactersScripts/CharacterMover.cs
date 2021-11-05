@@ -14,6 +14,8 @@ public class CharacterMover : MonoBehaviour
     private Vector2 _movement;
     private bool isDashButtonDown;
     private CharacterState _charState;
+    private Camera _camera;
+    private Vector3 _mouseDir;
 
     #region Animator
     private Animator _animator;
@@ -27,6 +29,7 @@ public class CharacterMover : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _charState = GetComponent<CharacterState>();
+        _camera = Camera.main;
     }
 
     void Update()
@@ -40,13 +43,16 @@ public class CharacterMover : MonoBehaviour
             isDashButtonDown = true;
         }
 
+        Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        _mouseDir = (mousePosition - transform.position).normalized;
+
         UpdateAnimatorParameters();
     }
 
     private void UpdateAnimatorParameters()
     {
-        _animator.SetFloat(animHorizontal, _movement.x);
-        _animator.SetFloat(animVertical, _movement.y);
+        _animator.SetFloat(animHorizontal, _mouseDir.x);
+        _animator.SetFloat(animVertical, _mouseDir.y);
         _animator.SetFloat(animSpeed, _movement.sqrMagnitude);
     }
 
@@ -70,9 +76,7 @@ public class CharacterMover : MonoBehaviour
         var dashDirection = _movement;
         if (_movement == Vector2.zero)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mouseDir = ((Vector2)mousePosition - _rb.position).normalized;
-            dashDirection = -mouseDir;
+            dashDirection = -_mouseDir;
         }
 
         Vector2 dashPosition = _rb.position + dashDirection * _dashDistance;
