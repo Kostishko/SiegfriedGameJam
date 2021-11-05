@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &5012496683682458399
 Animator:
   serializedVersion: 3
@@ -277,6 +277,26 @@ PrefabInstance:
     - target: {fileID: 8718636477217440797, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440798, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440798, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440798, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440798, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.124
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718636477217440798, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.151
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b567772d6a8ee114a9b6ec4cf5fee59a, type: 3}
