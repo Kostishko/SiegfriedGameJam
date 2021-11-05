@@ -8,10 +8,12 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private float _dashDistance = 5f;
     [SerializeField] private LayerMask _dashLayerMask;
     [SerializeField] private GameObject _dashEffect;
+    [SerializeField] private int _dashCost = 5;
 
     private Rigidbody2D _rb;
     private Vector2 _movement;
     private bool isDashButtonDown;
+    private CharacterState _charState;
 
     #region Animator
     private Animator _animator;
@@ -24,6 +26,7 @@ public class CharacterMover : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _charState = GetComponent<CharacterState>();
     }
 
     void Update()
@@ -31,10 +34,6 @@ public class CharacterMover : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
         _movement = _movement.normalized;
-
-        // var localScale = transform.localScale;
-        // localScale.x = _movement.x < 0 ? -1 : 1;
-        // transform.localScale = localScale;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -57,32 +56,41 @@ public class CharacterMover : MonoBehaviour
 
         if (isDashButtonDown)
         {
-            var dashDirection = _movement;
-            if (_movement == Vector2.zero)
+            if (_charState.Mana >= _dashCost)
             {
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mouseDir = ((Vector2)mousePosition - _rb.position).normalized;
-                dashDirection = -mouseDir;
+                Dash();
+                _charState.SpendMana(_dashCost);
             }
-
-            Vector2 dashPosition = _rb.position + dashDirection * _dashDistance;
-
-            RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, dashDirection, _dashDistance, _dashLayerMask);
-            if (raycastHit2d.collider != null)
-            {
-                dashPosition = raycastHit2d.point;
-            }
-
-            // Spawn visual effect
-            var dashTransform = Instantiate(_dashEffect, _rb.position, Quaternion.identity).GetComponent<Transform>();
-            var dashSize = Vector3.Distance(transform.position, dashPosition);
-            dashTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dashDirection));
-            dashTransform.localScale = new Vector3(dashSize / 1f, 1, 1);
-            Destroy(dashTransform.gameObject, 0.3f);
-
-            _rb.MovePosition(dashPosition);
             isDashButtonDown = false;
         }
+    }
+
+    private void Dash()
+    {
+        var dashDirection = _movement;
+        if (_movement == Vector2.zero)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mouseDir = ((Vector2)mousePosition - _rb.position).normalized;
+            dashDirection = -mouseDir;
+        }
+
+        Vector2 dashPosition = _rb.position + dashDirection * _dashDistance;
+
+        RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, dashDirection, _dashDistance, _dashLayerMask);
+        if (raycastHit2d.collider != null)
+        {
+            dashPosition = raycastHit2d.point;
+        }
+
+        // Spawn visual effect
+        var dashTransform = Instantiate(_dashEffect, _rb.position, Quaternion.identity).GetComponent<Transform>();
+        var dashSize = Vector3.Distance(transform.position, dashPosition);
+        dashTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dashDirection));
+        dashTransform.localScale = new Vector3(dashSize / 1f, 1, 1);
+        Destroy(dashTransform.gameObject, 0.3f);
+
+        _rb.MovePosition(dashPosition);
     }
 
     public float GetAngleFromVectorFloat(Vector2 dir)

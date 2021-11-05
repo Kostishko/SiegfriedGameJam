@@ -35,6 +35,7 @@ public class CharacterState : MonoBehaviour
             OnManaChange?.Invoke(_mana, _maxMana);
         }
     }
+    [SerializeField] private int _manaRegeneration = 1;
     #endregion
 
     #region Attack stats
@@ -46,6 +47,8 @@ public class CharacterState : MonoBehaviour
     {
         Health = _maxHealth;
         Mana = _maxMana;
+
+        StartCoroutine(ManaRegeneration());
     }
 
     public void TakeDamage(int damage)
@@ -63,5 +66,20 @@ public class CharacterState : MonoBehaviour
     public void TakeMana(int mana)
     {
         Mana += mana;
+    }
+
+    public void SpendMana(int mana)
+    {
+        Mana -= mana;
+    }
+
+    IEnumerator ManaRegeneration()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            if (Mana < _maxMana)
+                Mana += _manaRegeneration;
+        }
     }
 }
