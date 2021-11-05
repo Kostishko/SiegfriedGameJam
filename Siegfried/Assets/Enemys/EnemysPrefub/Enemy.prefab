@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.7
+  radius: 0.64
   height: 1.4
   repathRate: 0.5
   canSearch: 1
@@ -171,7 +171,7 @@ MonoBehaviour:
   _animator: {fileID: 2851828435366292371}
   _damageParticle: {fileID: 0}
   _shootParticle: {fileID: 0}
-  _projectile: {fileID: 0}
+  _projectile: {fileID: 407525872188605434, guid: ff4ee0f227f038649849ce66b6272dcc, type: 3}
   _playerCharacter: {fileID: 0}
 --- !u!1 &4156145624866306423
 GameObject:
