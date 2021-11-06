@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,13 @@ public class InventoryCell : MonoBehaviour
 {
     public Item item;
     public int amount;
+    private TextMeshProUGUI _text;
 
     private Image _image;
     void Start()
     {
         _image = GetComponent<Image>();
+        _text = GetComponentInChildren<TextMeshProUGUI>();
         Refresh();
     }
 
@@ -35,12 +38,14 @@ public class InventoryCell : MonoBehaviour
         {
             _image.sprite = item.sprite;
             _image.color = new Color(1, 1, 1, 1);
+            _text.text = amount.ToString();
         }
         else
         {
             _image.sprite = null;
             _image.color = new Color(1, 1, 1, 0);
         }
+        _text.gameObject.SetActive(item);
     }
 
     public void Use()
