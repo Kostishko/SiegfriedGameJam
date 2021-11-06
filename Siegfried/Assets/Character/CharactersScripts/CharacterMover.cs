@@ -46,7 +46,8 @@ public class CharacterMover : MonoBehaviour
         Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         _mouseDir = (mousePosition - transform.position).normalized;
 
-        UpdateAnimatorParameters();
+        if (_charState.state != CharacterStates.MeleeAttack)
+            UpdateAnimatorParameters();
     }
 
     private void UpdateAnimatorParameters()
