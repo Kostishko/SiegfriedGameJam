@@ -57,6 +57,8 @@ public class CharacterState : MonoBehaviour
     {
         Health -= damage;
 
+        DamagePopup.Create(transform.position, damage);
+
         if (Health == 0)
             OnDie?.Invoke();
 

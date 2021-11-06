@@ -9,7 +9,8 @@ public class Bullet : MonoBehaviour
 
     public void Setup(Vector2 direction)
     {
-        GetComponent<Rigidbody2D>().AddForce(direction * _speed, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(direction.normalized * _speed, ForceMode2D.Impulse);
+        GetComponent<Transform>().Rotate(0, 0, GetAngleFromVectorFloat(direction));
         Destroy(gameObject, 5f);
     }
 
@@ -22,5 +23,14 @@ public class Bullet : MonoBehaviour
             target.takeDamage(damage);
             Destroy(gameObject);
         }
+    }
+
+    public float GetAngleFromVectorFloat(Vector2 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
     }
 }
