@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
 
 
     [SerializeField] private GameObject _playerCharacter;
+    private AIDestinationSetter _AISetter;
 
 
     
@@ -64,6 +65,11 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Can't Find Character!");
         }
+
+        _AISetter = GetComponent<AIDestinationSetter>();
+        _AISetter.target = _playerCharacter.transform;
+        
+
 
         if (_damageParticle==null)
         {
@@ -82,6 +88,10 @@ public class Enemy : MonoBehaviour
         }
 
         _path = GetComponent<AIPath>();
+        if (!_path)
+        {
+            Debug.Log("_path doesn't exist!");
+        }
 
 
     }
@@ -150,8 +160,8 @@ public class Enemy : MonoBehaviour
     public void takeDamage( int _damage)
     {
 
-        Health -= _damage;
-        if (Health==0)
+        _curHealth-= _damage;
+        if (_curHealth==0)
         {
             isDie = true;
             _path.maxSpeed = 0;

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4156145624568037913}
   - component: {fileID: 112927491138275497}
   m_Layer: 0
-  m_Name: AfroRange
+  m_Name: CyberShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,12 +166,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _maxHealth: 50
-  _reloadTime: 5
+  _reloadTime: 1
   isMelee: 0
   _animator: {fileID: 2851828435366292371}
   _damageParticle: {fileID: 0}
   _shootParticle: {fileID: 0}
-  _projectile: {fileID: 407525872188605434, guid: ff4ee0f227f038649849ce66b6272dcc, type: 3}
+  _projectile: {fileID: 7725455457488213707, guid: d85d945956aa676469a312da2f229db5, type: 3}
   _playerCharacter: {fileID: 0}
 --- !u!1 &4156145624866306423
 GameObject:
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 932af10da749b7296ba81303bd2f97dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03820174fac7199ef9657c493781bdc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,7 +267,7 @@ Animator:
   m_GameObject: {fileID: 4156145624866306423}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11993cb7f29d49566b35c369eaddf988, type: 2}
+  m_Controller: {fileID: 9100000, guid: f5c070a7eecc62a37998ec4a041d9fe7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

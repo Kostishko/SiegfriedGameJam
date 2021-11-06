@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4156145624568037913}
   - component: {fileID: 112927491138275497}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: AfroRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,9 +94,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 3.03
-  pickNextWaypointDist: 1.01
-  endReachedDistance: 2.39
+  slowdownDistance: 5
+  pickNextWaypointDist: 0.86
+  endReachedDistance: 4.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   _damage: 5
   _maxHealth: 50
   _reloadTime: 5
-  isMelee: 1
+  isMelee: 0
   _animator: {fileID: 2851828435366292371}
   _damageParticle: {fileID: 0}
   _shootParticle: {fileID: 0}
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: bd32ce730d0b5b6b6b456bee8248778b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 932af10da749b7296ba81303bd2f97dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,7 +267,7 @@ Animator:
   m_GameObject: {fileID: 4156145624866306423}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45dd483ce3c85de4e8ea68c93b324455, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11993cb7f29d49566b35c369eaddf988, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
