@@ -14,6 +14,10 @@ public class CharacterFight : MonoBehaviour
     private CharacterState _charState;
     private Animator _animator;
     private readonly int _animAtack = Animator.StringToHash("MeleeAtack");
+    private readonly int _animAtackUp = Animator.StringToHash("MeleeAtackUp");
+    private readonly int _animAtackDown = Animator.StringToHash("MeleeAtackDown");
+    private readonly int _animAtackLeft = Animator.StringToHash("MeleeAtackLeft");
+    private readonly int _animAtackRight = Animator.StringToHash("MeleeAtackRight");
     private Vector3 _attackDir;
 
     private void Start()
@@ -36,14 +40,24 @@ public class CharacterFight : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _attackDir = (mousePosition - transform.position).normalized;
 
-            //Vector3 attackPosition = transform.position + mouseDir * _attackOffset;
+            var animTrigger = _animAtackDown;
+            if (Mathf.Abs(_attackDir.y) > Mathf.Abs(_attackDir.x))//vertical
+            {
+                if (_attackDir.y > 0)
+                    animTrigger = _animAtackUp;
+            }
+            else //horizontal
+            {
+                if (_attackDir.x > 0)
+                    animTrigger = _animAtackRight;
+                else
+                    animTrigger = _animAtackLeft;
+            }
 
-            //float attackRange = 10f;
-
-            _animator.SetTrigger(_animAtack);
+            _animator.SetTrigger(animTrigger);
             _charState.state = CharacterStates.MeleeAttack;
             _machineGun.gameObject.SetActive(false);
-            CreatePlumb();
+            CreatePlumb(animTrigger == _animAtackLeft || animTrigger == _animAtackUp && _attackDir.x < 0);
         }
         if (Input.GetMouseButtonDown(1) && _charState.state != CharacterStates.MeleeAttack)
         {
@@ -73,14 +87,17 @@ public class CharacterFight : MonoBehaviour
     }
     #endregion
 
-    private void CreatePlumb()
+    private void CreatePlumb(bool isLeft)
     {
         float alpha = _attackDir.y < 0 && Mathf.Abs(_attackDir.y) > Mathf.Abs(_attackDir.x) ? 0f : 1f;
 
-        var plumeTransform = Instantiate(_plume, transform.position, Quaternion.identity).GetComponent<Transform>();
+        var plumeTransform = Instantiate(_plume, transform.position, Quaternion.identity, transform).GetComponent<Transform>();
         plumeTransform.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg);
+
+        if (isLeft)
+            plumeTransform.localScale = new Vector3(1, -1, 1);
         plumeTransform.GetComponentInChildren<Plume>().OnEnter += OnEnterAttackPlume;
         plumeTransform.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
-        Destroy(plumeTransform.gameObject, 0.3f);
+        Destroy(plumeTransform.gameObject, 0.2f);
     }
 }
