@@ -58,6 +58,7 @@ public class CharacterState : MonoBehaviour
         Health -= damage;
 
         DamagePopup.Create(transform.position, damage);
+        StartCoroutine(Blinking());
 
         if (Health == 0)
             OnDie?.Invoke();
@@ -87,6 +88,27 @@ public class CharacterState : MonoBehaviour
             if (Mana < _maxMana)
                 Mana += _manaRegeneration;
         }
+    }
+
+    IEnumerator Blinking()
+    {
+        var renderer = GetComponent<SpriteRenderer>();
+        var time = 0.1f;
+        var scaleTime = 1f / time;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            renderer.color = Color.Lerp(Color.red, Color.white, time * scaleTime);
+            yield return new WaitForEndOfFrame();
+        }
+        time = 0.1f;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            renderer.color = Color.Lerp(Color.white, Color.red, time * scaleTime);
+            yield return new WaitForEndOfFrame();
+        }
+        renderer.color = Color.white;
     }
 }
 
