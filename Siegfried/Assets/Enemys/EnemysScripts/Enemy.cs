@@ -169,6 +169,7 @@ public class Enemy : MonoBehaviour
             _enemyState = EnemyState.DEAD;
 
         }
+        DamagePopup.Create(transform.position, _damage);
 
         //проигрышь партиклей получения урона, в идеале также анимацию получения урона
 
