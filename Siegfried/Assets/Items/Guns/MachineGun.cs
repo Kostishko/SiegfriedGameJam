@@ -19,6 +19,7 @@ public class MachineGun : Weapon
         _aimTransform = transform;
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _characterTransform = transform.parent;
+        _characterOrder = _characterTransform.GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     private void Update()
