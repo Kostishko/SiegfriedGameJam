@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackOffset: 5
-  _meleeTimeBetweenAttacks: 1
+  _meleeTimeBetweenAttacks: 0.3
   _plume: {fileID: 3687596310448813383, guid: c3bc709e2ada620418a2eee8fddd83a4, type: 3}
 --- !u!114 &6210851385429720201
 MonoBehaviour:
