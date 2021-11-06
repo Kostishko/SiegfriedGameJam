@@ -23,9 +23,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _reloadTime;
 
     [SerializeField] bool isMelee = true;
+    private Vector2 _attackDir;
+
     #endregion
 
-    #region
+    #region Enemy State
     [Header("Enemy states")]
     private bool isReloading;
     private bool isDie = false;    
@@ -107,6 +109,8 @@ public class Enemy : MonoBehaviour
             else
             {
                 _reloadTimer = _reloadTime;
+                _attackDir = (_playerCharacter.transform.position - transform.position).normalized;
+                print(_attackDir);
                 if (isMelee)
                 {
                     EnemyMeleeAttack();
@@ -158,19 +162,41 @@ public class Enemy : MonoBehaviour
 
         //проигрышь партиклей получения урона, в идеале также анимацию получения урона
 
-        _damageParticle.Play();
+        // _damageParticle.Play();
 
     }
 
     public void EnemyMeleeAttack()
     {
-       
+        float alpha = _attackDir.y < 0 && Mathf.Abs(_attackDir.y) > Mathf.Abs(_attackDir.x) ? 0f : 1f;
+        
+        var enemyPlum = Instantiate(_projectile, transform.position, Quaternion.identity).GetComponent<Transform>();
+        enemyPlum.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg);
+        enemyPlum.GetComponentInChildren<MeleeEnemyProjectile>().OnEnter += OnEnterAttackPlume;
+        enemyPlum.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
+        Destroy(enemyPlum.gameObject, 0.3f);
+
+    }
+
+    private void OnEnterAttackPlume(Collider2D other)
+    {
+        CharacterState _character = other.GetComponent<CharacterState>();
+        if (_character)
+        { 
+            _character.TakeDamage(_damage);
+        }
     }
 
     public void EnemyRangeAttack()
     {
 
+        var _bullet = Instantiate(_projectile, transform.position, Quaternion.identity);
+        Vector2 _dir = new Vector2 (_attackDir.x,_attackDir.y);
+        _bullet.GetComponentInChildren<RangeEnemyProjectile>().Setup(_dir);
+
     }
+
+
 
 
 }
