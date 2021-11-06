@@ -13,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             Dialogue.instance.StartDialgue(speech);
 
-            Destroy(GetComponent<BoxCollider2D>());
+            Destroy(gameObject);
         }
     }
 }

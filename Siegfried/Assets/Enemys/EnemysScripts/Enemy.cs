@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     #region EnemyStats
     [Header("Enemy Stats")]
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     #region Enemy State
     [Header("Enemy states")]
     private bool isReloading;
-    private bool isDie = false;    
+    private bool isDie = false;
     public enum EnemyState
     {
         MOVING,
@@ -56,22 +56,22 @@ public class Enemy : MonoBehaviour
     private AIDestinationSetter _AISetter;
 
 
-    
+
 
     private void Start()
     {
         _playerCharacter = GameObject.FindGameObjectWithTag("Character");
-        if (_playerCharacter==null)
+        if (_playerCharacter == null)
         {
             Debug.Log("Can't Find Character!");
         }
 
         _AISetter = GetComponent<AIDestinationSetter>();
         _AISetter.target = _playerCharacter.transform;
-        
 
 
-        if (_damageParticle==null)
+
+        if (_damageParticle == null)
         {
             Debug.Log("damage particle doesn't here!");
         }
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("shoot particle doesn't here!");
         }
 
-        if (!isMelee&& _projectile==null)
+        if (!isMelee && _projectile == null)
         {
             Debug.Log("Projectfile is null");
         }
@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour
         if (_enemyState == EnemyState.FIGHT)
         {
 
-            if (_reloadTimer>=0)
+            if (_reloadTimer >= 0)
             {
                 _reloadTimer -= 1 * Time.deltaTime;
             }
@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
                 {
                     EnemyRangeAttack();
                 }
-                
+
             }
 
 
@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private bool isEnemyMoving ()
+    private bool isEnemyMoving()
     {
         if (_path.velocity.x < 0.01f && _path.velocity.y < 0.01f)
         {
@@ -157,11 +157,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void takeDamage( int _damage)
+    public void TakeDamage(int _damage)
     {
 
-        _curHealth-= _damage;
-        if (_curHealth==0)
+        _curHealth -= _damage;
+        if (_curHealth == 0)
         {
             isDie = true;
             _path.maxSpeed = 0;
@@ -180,7 +180,7 @@ public class Enemy : MonoBehaviour
     public void EnemyMeleeAttack()
     {
         float alpha = _attackDir.y < 0 && Mathf.Abs(_attackDir.y) > Mathf.Abs(_attackDir.x) ? 0f : 1f;
-        
+
         var enemyPlum = Instantiate(_projectile, transform.position, Quaternion.identity).GetComponent<Transform>();
         enemyPlum.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg);
         enemyPlum.GetComponentInChildren<MeleeEnemyProjectile>().OnEnter += OnEnterAttackPlume;
@@ -193,7 +193,7 @@ public class Enemy : MonoBehaviour
     {
         CharacterState _character = other.GetComponent<CharacterState>();
         if (_character)
-        { 
+        {
             _character.TakeDamage(_damage);
         }
     }
@@ -202,7 +202,7 @@ public class Enemy : MonoBehaviour
     {
 
         var _bullet = Instantiate(_projectile, transform.position, Quaternion.identity);
-        Vector2 _dir = new Vector2 (_attackDir.x,_attackDir.y);
+        Vector2 _dir = new Vector2(_attackDir.x, _attackDir.y);
         _bullet.GetComponentInChildren<RangeEnemyProjectile>().Setup(_dir);
 
     }
