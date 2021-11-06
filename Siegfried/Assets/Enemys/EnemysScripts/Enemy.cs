@@ -160,8 +160,8 @@ public class Enemy : MonoBehaviour
     public void takeDamage( int _damage)
     {
 
-        Health -= _damage;
-        if (Health==0)
+        _curHealth-= _damage;
+        if (_curHealth==0)
         {
             isDie = true;
             _path.maxSpeed = 0;
