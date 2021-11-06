@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterState : MonoBehaviour
+public class CharacterState : MonoBehaviour, IDamageable
 {
     public event Action<int, int> OnHealthChange;
     public event Action<int, int> OnManaChange;

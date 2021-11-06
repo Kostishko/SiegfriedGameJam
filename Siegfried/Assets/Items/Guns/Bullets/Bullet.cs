@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         Enemy target = other.GetComponent<Enemy>();
         if (target != null)
         {
-            target.takeDamage(damage);
+            target.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -75,7 +75,7 @@ public class CharacterFight : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy)
         {
-            enemy.takeDamage(_charState.meleeDamage);
+            enemy.TakeDamage(_charState.meleeDamage);
         }
     }
 

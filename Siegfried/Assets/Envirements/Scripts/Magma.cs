@@ -5,23 +5,23 @@ using UnityEngine;
 public class Magma : MonoBehaviour
 {
     [SerializeField] private int _damage = 5;
-    private List<CharacterState> clients = new List<CharacterState>();
+    private List<IDamageable> clients = new List<IDamageable>();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var charState = other.GetComponent<CharacterState>();
-        if (charState)
+        var charState = other.GetComponent<IDamageable>();
+        if (charState != null)
             StartCoroutine(Burning(charState));
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        var charState = other.GetComponent<CharacterState>();
-        if (charState && clients.Contains(charState))
+        var charState = other.GetComponent<IDamageable>();
+        if (charState != null && clients.Contains(charState))
             clients.Remove(charState);
     }
 
-    IEnumerator Burning(CharacterState character)
+    IEnumerator Burning(IDamageable character)
     {
         clients.Add(character);
 
