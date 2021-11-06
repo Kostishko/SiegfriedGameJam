@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CharacterFight : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CharacterFight : MonoBehaviour
     }
     private void HandleAttack()
     {
-        if (Input.GetMouseButtonDown(0) && _timeSinceMeleeAttack > _meleeTimeBetweenAttacks)
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && _timeSinceMeleeAttack > _meleeTimeBetweenAttacks)
         {
             _timeSinceMeleeAttack = 0f;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
