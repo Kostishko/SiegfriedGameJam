@@ -185,6 +185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color_i: {r: 0.764151, g: 0, b: 0, a: 1}
   color_f: {r: 0.5660378, g: 0, b: 0, a: 0}
-  initialOffset: {x: 0, y: 0, z: 0}
-  finalOffset: {x: 0, y: 1, z: 0}
+  initialOffset: {x: 0, y: 0.2, z: 0}
+  finalOffset: {x: 0, y: 1.2, z: 0}
   fadeDuration: 1

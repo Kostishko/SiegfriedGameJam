@@ -16,6 +16,7 @@ public class DamagePopup : MonoBehaviour
     public float fadeDuration;
     private float fadeStartTime;
     private TextMeshPro _text;
+    private Vector3 _startPosition, _endPosition;
     private void Awake()
     {
         _text = GetComponent<TextMeshPro>();
@@ -24,6 +25,8 @@ public class DamagePopup : MonoBehaviour
     {
         _text.text = damage.ToString();
         fadeStartTime = Time.time;
+        _startPosition = transform.localPosition + initialOffset;
+        _endPosition = transform.localPosition + finalOffset;
     }
 
     void Update()
@@ -32,7 +35,7 @@ public class DamagePopup : MonoBehaviour
         if (progress <= 1)
         {
             //lerp factor is from 0 to 1, so we use (FadeExitTime-Time.time)/fadeDuration
-            transform.localPosition = Vector3.Lerp(initialOffset, finalOffset, progress);
+            transform.localPosition = Vector3.Lerp(_startPosition, _endPosition, progress);
             _text.color = Color.Lerp(color_i, color_f, progress);
         }
         else Destroy(gameObject);
