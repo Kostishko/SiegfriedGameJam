@@ -5,17 +5,75 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    public SaveSystem._data _data;
+    public SaveSystem.Player_data player_data;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject _character;
+
+    public List<InventoryCell> Inventory;
+
+
+
+
+    private void Start()
     {
-        _data = SaveSystem.Load();
+
+        if (SaveSystem.isSavedPlayerData())
+        {
+            player_data = SaveSystem.PlayerLoad();
+        }
+        else
+        {
+            player_data = SaveSystem.PlayerDefault();
+        }
+
+       
+        if (!_character)
+        {
+            _character = GameObject.FindGameObjectWithTag("Character");
+            if (!_character)
+            {
+                print("Game controller can't find Character!");
+            }
+            else
+            {
+                var _mlDamage = _character.GetComponent<CharacterState>().meleeDamage;
+                if (player_data.critChance < 100)
+                {
+                    _mlDamage = player_data.minMeleeAttack;
+                }
+                else
+                {
+                    _mlDamage = 777;
+                }
+
+            }
+        }
+       
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void AddCoin (int _cnt)
     {
-        
+        player_data.coins += _cnt;
     }
+
+
+    public void AddHealthPotion (int _cnt)
+    {
+        player_data.hpPotion += _cnt;
+    }
+
+    public void AddManaPotion(int _cnt)
+    {
+        player_data.mnPotion += _cnt;
+    }
+
+
+
+
+
+
+
+
+
 }

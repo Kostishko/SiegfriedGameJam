@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+[CreateAssetMenu(fileName = "Coin", menuName = "ScriptableObjects/Items/Coin", order = 1)]
+public class Coin : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public int amount;
+    
+    public override void Use()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
     }
 }
