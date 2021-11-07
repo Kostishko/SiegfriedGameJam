@@ -648,7 +648,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3174934457947411262, guid: ef7ec602efc3a6747ab576d15f4e0f5c, type: 3}
       propertyPath: _moveDistance
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3174934457947411263, guid: ef7ec602efc3a6747ab576d15f4e0f5c, type: 3}
       propertyPath: m_Name
