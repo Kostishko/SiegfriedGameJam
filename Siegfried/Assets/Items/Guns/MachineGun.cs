@@ -13,6 +13,7 @@ public class MachineGun : Weapon
     private int _characterOrder = 10;
     private Transform _characterTransform;
     private SpriteRenderer _renderer;
+    private CharacterState _charState;
     private void Awake()
     {
         _camera = Camera.main;
@@ -20,10 +21,12 @@ public class MachineGun : Weapon
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _characterTransform = transform.parent;
         _characterOrder = _characterTransform.GetComponent<SpriteRenderer>().sortingOrder;
+        _charState = _characterTransform.GetComponent<CharacterState>();
     }
 
     private void Update()
     {
+        if (_charState.state == CharacterStates.Dead) return;
         UpdateRotation();
         UpdateSorting();
     }

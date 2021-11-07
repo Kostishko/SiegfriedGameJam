@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CharacterFight : MonoBehaviour
 {
-    [SerializeField] float _attackOffset = 5f;
+    //[SerializeField] float _attackOffset = 5f;
     [SerializeField] float _meleeTimeBetweenAttacks = 1f;
     [SerializeField] private GameObject _plume;
 
@@ -28,6 +28,7 @@ public class CharacterFight : MonoBehaviour
     }
     private void Update()
     {
+        if (_charState.state == CharacterStates.Dead) return;
         _timeSinceMeleeAttack += Time.deltaTime;
 
         HandleAttack();
