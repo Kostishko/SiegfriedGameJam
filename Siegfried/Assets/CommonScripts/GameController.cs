@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
 
     public SaveSystem.Player_data player_data;
+    public SaveSystem.Plot_data plot_data;
 
     public GameObject _character;
 
+    public GameObject _dialogue;
+
+    public List<Speech> _barSpeeches;
 
 
     #region Inventory
@@ -56,9 +61,75 @@ public class GameController : MonoBehaviour
             }
         }
 
+        if (SaveSystem.isSavedPlotData())
+        {
+            plot_data = SaveSystem.PlotLoad();
+         }
+        else
+        {
+            plot_data = SaveSystem.PlotDefault();
+        }
+
+        BarSpeeches();
         SetupInventory();
 
     }
+
+    public void SceneLoader ()
+    {
+        SaveSystem.PlayerSave(player_data);
+        SaveSystem.PlotSave(plot_data);
+        if (_barSpeeches is null)
+        {
+
+            SceneManager.LoadScene(1);
+
+        }
+
+        else
+        {
+            if (plot_data.currentLevel == 0)
+            {
+                SceneManager.LoadScene(2);
+            }
+
+            if (plot_data.currentLevel == 1)
+            {
+                SceneManager.LoadScene(3);
+            }
+
+        }
+                
+    }
+
+    public void BarSpeeches()
+    {
+
+        if (_barSpeeches != null)
+        {
+
+            if (plot_data.currentLevel == 0)
+            {
+                Dialogue.instance.StartDialgueOld(_barSpeeches[0]);
+            }
+
+
+            if (plot_data.currentLevel == 1)
+            {
+                Dialogue.instance.StartDialgueOld(_barSpeeches[1]);
+            }
+
+
+            if (plot_data.currentLevel == 2)
+            {
+                Dialogue.instance.StartDialgueOld(_barSpeeches[2]);
+            }
+
+
+        }
+
+    }
+
 
 
     private void AddCoin(int _cnt)
