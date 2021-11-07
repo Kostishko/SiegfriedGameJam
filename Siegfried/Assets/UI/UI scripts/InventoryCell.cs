@@ -8,6 +8,7 @@ public class InventoryCell : MonoBehaviour
 {
     public Item item;
     public int amount;
+    public KeyCode keyCode;
     private TextMeshProUGUI _text;
 
     private Image _image;
@@ -58,5 +59,10 @@ public class InventoryCell : MonoBehaviour
             Refresh();
             FindObjectOfType<GameController>().AddItemCount(-1, item);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(keyCode)) Use();
     }
 }
