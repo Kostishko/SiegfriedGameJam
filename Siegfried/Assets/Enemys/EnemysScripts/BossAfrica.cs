@@ -8,7 +8,7 @@ public class BossAfrica : MonoBehaviour
     private Transform _playerCharacter;
 
     [SerializeField] private LayerMask _totemLayerMask;
-    [SerializeField] private int _moveDistance = 2;
+    [SerializeField] private float _moveDistance = 2;
     [SerializeField] private float _moveSpeed = 3f;
     private Vector2 _waypoint;
     private Vector2 _startPosition;
