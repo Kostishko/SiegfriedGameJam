@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _playerCharacter;
     private AIDestinationSetter _AISetter;
 
-
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+    public AudioClip swordSound;
 
 
     private void Start()
@@ -194,6 +196,8 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyPlum.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
         Destroy(enemyPlum.gameObject, 0.3f);
 
+        audioSource.PlayOneShot(swordSound);
+
     }
 
     private void OnEnterAttackPlume(Collider2D other)
@@ -207,7 +211,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void EnemyRangeAttack()
     {
-
+        audioSource.PlayOneShot(shootSound);
         var _bullet = Instantiate(_projectile, transform.position, Quaternion.identity);
         Vector2 _dir = new Vector2(_attackDir.x, _attackDir.y);
         _bullet.GetComponentInChildren<RangeEnemyProjectile>().Setup(_dir);

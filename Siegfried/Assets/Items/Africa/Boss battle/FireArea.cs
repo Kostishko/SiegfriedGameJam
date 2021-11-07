@@ -7,9 +7,12 @@ public class FireArea : MonoBehaviour
     private Totem[] totems;
     private ParticleSystem _fire;
 
+    private AudioSource _audio;
+
     void Start()
     {
         _fire = GetComponent<ParticleSystem>();
+        _audio = GetComponent<AudioSource>();
         totems = GetComponentsInChildren<Totem>();
         foreach (var totem in totems)
         {
@@ -29,6 +32,7 @@ public class FireArea : MonoBehaviour
     private void IgniteTheArea()
     {
         _fire.Play();
+        _audio.Play();
         var boss = FindObjectOfType<BossAfrica>();
         if (boss) boss.TakeDamage(10);
     }
