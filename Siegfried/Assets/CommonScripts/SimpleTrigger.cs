@@ -13,6 +13,7 @@ public class SimpleTrigger : MonoBehaviour
         if (other.GetComponent<CharacterState>())
         {
             gObject.SendMessage(methodName);
+            Destroy(this.gameObject);
         }
     }
 
