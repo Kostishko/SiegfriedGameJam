@@ -34,6 +34,7 @@ public class CharacterMover : MonoBehaviour
 
     void Update()
     {
+        if (_charState.state == CharacterStates.Dead) return;
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
         _movement = _movement.normalized;
@@ -59,6 +60,7 @@ public class CharacterMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_charState.state == CharacterStates.Dead) return;
         _rb.MovePosition(_rb.position + _movement * _moveSpeed * Time.fixedDeltaTime);
 
         if (isDashButtonDown)
