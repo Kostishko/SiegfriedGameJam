@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Json;
 public static class SaveSystem
 {
 
-
+    #region Player_data
     public class Player_data
     {
         [DataMember]
@@ -82,6 +82,10 @@ public static class SaveSystem
         return _data;
 
     }
+
+#endregion
+
+
 
     public class Plot_data
     {

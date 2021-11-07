@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenuScene.unity
-    guid: f1d629b7a1423583c891ad74be813051
+    path: Assets/Scenes/Golden Scenes/MainMenu.unity
+    guid: 96673d02c6233e943bf9f5cbf8a47186
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: b2250567e856d324cbfb7fd117e9677b
+    path: Assets/Scenes/Golden Scenes/Bar.unity
+    guid: ffc2b6a3d8febc749830d7ea2b4edae0
+  - enabled: 1
+    path: Assets/Scenes/Golden Scenes/Africa.unity
+    guid: 5fca3ed7fa07b854b9759a241c6946ea
+  - enabled: 1
+    path: Assets/Scenes/Golden Scenes/Cyberpunk.unity
+    guid: b99d7c2b84d289e448100351f4ef4f9e
   m_configObjects: {}
