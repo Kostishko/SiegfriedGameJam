@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
 <<<<<<< Updated upstream
     public bool isFirstLevel;
 
+=======
+    private CurrenLevel _myLevel;
+>>>>>>> Stashed changes
     #region Inventory
     //public List<InventoryCell> Inventory;
     [SerializeField] private Item _healPotion;
@@ -26,13 +29,19 @@ public class GameController : MonoBehaviour
 
     #endregion
 
-
+    
 
     private void Start()
     {
 <<<<<<< Updated upstream
 
         if (SaveSystem.isSavedPlayerData() && isFirstLevel)
+=======
+        _myLevel = FindObjectOfType<CurrenLevel>();
+        
+/*
+        if (SaveSystem.isSavedPlayerData())
+>>>>>>> Stashed changes
         {
             player_data = SaveSystem.PlayerLoad();
         }
@@ -70,18 +79,25 @@ public class GameController : MonoBehaviour
         }
         else
         {
+
             plot_data = SaveSystem.PlotDefault();
         }
+*/
 
         Invoke(nameof(BarSpeeches), 1f);
         SetupInventory();
 
     }
 
+<<<<<<< Updated upstream
     public void SceneLoader()
+=======
+
+    public void SceneLoader ()
+>>>>>>> Stashed changes
     {
-        SaveSystem.PlayerSave(player_data);
-        SaveSystem.PlotSave(plot_data);
+     /*   SaveSystem.PlayerSave(player_data);
+        SaveSystem.PlotSave(plot_data);*/
         if (_barSpeeches is null)
         {
 
@@ -108,22 +124,22 @@ public class GameController : MonoBehaviour
     public void BarSpeeches()
     {
 
-        if (_barSpeeches != null)
+        if (_barSpeeches.Count !=0)
         {
 
-            if (plot_data.currentLevel == 0)
+            if (_myLevel._muLevel == 0)
             {
                 Dialogue.instance.StartDialgueOld(_barSpeeches[0]);
             }
 
 
-            if (plot_data.currentLevel == 1)
+            if (_myLevel._muLevel == 1)
             {
                 Dialogue.instance.StartDialgueOld(_barSpeeches[1]);
             }
 
 
-            if (plot_data.currentLevel == 2)
+            if (_myLevel._muLevel == 2)
             {
                 Dialogue.instance.StartDialgueOld(_barSpeeches[2]);
             }
