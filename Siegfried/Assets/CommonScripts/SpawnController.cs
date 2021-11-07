@@ -18,7 +18,7 @@ public class SpawnController : MonoBehaviour
 
     [SerializeField]
     private List<Wave> ListOfWaves;
-    private int curWaveNumber; 
+    public int curWaveNumber; 
 
 
 
@@ -100,11 +100,12 @@ public class SpawnController : MonoBehaviour
             Debug.Log("ALL WAVES COMPLETE!");
            
         }
-        else
-        {
-            curWaveNumber++;
 
+        if (ListOfWaves[curWaveNumber]._block!=null)
+        {
+            Destroy(ListOfWaves[curWaveNumber]._block);
         }
+
 
 
     }

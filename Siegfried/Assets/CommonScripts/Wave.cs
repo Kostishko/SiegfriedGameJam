@@ -12,6 +12,8 @@ public class Wave : MonoBehaviour
     public List<GameObject> hardEnemys;
     public int hardEnemyCount;
 
+    public  GameObject _block;
+
     public int WaveNumber;
 
     // time between spawn
