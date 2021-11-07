@@ -30,6 +30,12 @@ public class Bullet : MonoBehaviour
             boss.TakeDamage(0);
             Destroy(gameObject);
         }
+
+        var totem = other.GetComponent<Totem>();
+        if (totem)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public float GetAngleFromVectorFloat(Vector2 dir)
