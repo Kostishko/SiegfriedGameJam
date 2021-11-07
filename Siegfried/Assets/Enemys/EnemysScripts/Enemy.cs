@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Enemy Stats")]
     [SerializeField] private int _damage = 5;
     [SerializeField] private int _maxHealth;
-    private int _curHealth;
-    public int Health
+    [SerializeField] private int _curHealth;
+    [SerializeField] public int Health
     {
         get => _curHealth;
         private set
@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        _curHealth = _maxHealth;
         _playerCharacter = GameObject.FindGameObjectWithTag("Character");
         if (_playerCharacter == null)
         {
@@ -161,12 +162,14 @@ public class Enemy : MonoBehaviour, IDamageable
     {
 
         _curHealth -= _damage;
-        if (_curHealth == 0)
+        if (_curHealth <= 0)
         {
             isDie = true;
             _path.maxSpeed = 0;
             // проигрыш анимации смерти
             _enemyState = EnemyState.DEAD;
+            Destroy(this.gameObject, 0.5f);
+            
 
         }
         DamagePopup.Create(transform.position, _damage);

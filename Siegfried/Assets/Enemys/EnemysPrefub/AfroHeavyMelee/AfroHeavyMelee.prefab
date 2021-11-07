@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5569511459866597688}
   - component: {fileID: 5569511459866597689}
   - component: {fileID: 5569511459866597690}
-  - component: {fileID: 5569511459866597694}
   - component: {fileID: 5569511459866597693}
   - component: {fileID: 8464035780121105293}
+  - component: {fileID: 85760229149599670}
   m_Layer: 0
   m_Name: AfroHeavyMelee
   m_TagString: Untagged
@@ -116,22 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
---- !u!58 &5569511459866597694
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569511459866597691}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.69
 --- !u!50 &5569511459866597693
 Rigidbody2D:
   serializedVersion: 4
@@ -166,7 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _maxHealth: 200
+  _maxHealth: 15
+  _curHealth: 0
   _reloadTime: 3
   isMelee: 1
   _animator: {fileID: 6013646480863228087}
@@ -174,6 +159,32 @@ MonoBehaviour:
   _shootParticle: {fileID: 0}
   _projectile: {fileID: 407525872188605434, guid: ff4ee0f227f038649849ce66b6272dcc, type: 3}
   _playerCharacter: {fileID: 0}
+--- !u!61 &85760229149599670
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569511459866597691}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0062617064, y: -0.26716337}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.63682485, y: 0.4656733}
+  m_EdgeRadius: 0
 --- !u!1 &5569511460206273107
 GameObject:
   m_ObjectHideFlags: 0
