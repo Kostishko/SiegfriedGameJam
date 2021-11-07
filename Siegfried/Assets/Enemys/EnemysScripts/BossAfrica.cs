@@ -40,6 +40,7 @@ public class BossAfrica : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _playerCharacter = GameObject.FindGameObjectWithTag("Character").GetComponent<Transform>();
         _startPosition = _rb.position;
+        _waypoint = _startPosition + new Vector2(Random.Range(-_moveDistance, _moveDistance), Random.Range(-_moveDistance, _moveDistance));
     }
 
     private void Update()
@@ -106,6 +107,7 @@ public class BossAfrica : MonoBehaviour
         if (Health == 0)
         {
             _state = BossStates.Dead;
+            Destroy(gameObject, 0.5f);
 
         }
         DamagePopup.Create(transform.position, damage);
@@ -115,7 +117,7 @@ public class BossAfrica : MonoBehaviour
     private void Moving()
     {
         if (Vector2.Distance(_rb.position, _waypoint) < 0.1f)
-            _waypoint = _startPosition + new Vector2(Random.Range(-_moveDistance, _moveDistance), Random.Range(-_moveDistance, _moveDistance));
+        { _waypoint = _startPosition + new Vector2(Random.Range(-_moveDistance, _moveDistance), Random.Range(-_moveDistance, _moveDistance)); }
         else
         {
             var dir = (_waypoint - _rb.position).normalized;

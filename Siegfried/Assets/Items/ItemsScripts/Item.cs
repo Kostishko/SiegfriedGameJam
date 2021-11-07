@@ -7,9 +7,9 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite sprite;
 
-    virtual public void Use()
+    virtual public bool Use()
     {
-
+        return false;
     }
 
 

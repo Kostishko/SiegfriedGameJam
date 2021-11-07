@@ -11,4 +11,5 @@ public class GameAssets : MonoBehaviour
         instance = this;
     }
     public GameObject DamagePopup;
+    public GameObject Coin;
 }

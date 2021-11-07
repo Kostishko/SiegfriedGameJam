@@ -37,11 +37,11 @@ public class ItemOnEarth : MonoBehaviour
 
             var inventory = FindObjectOfType<Inventory>();
             if (inventory && inventory.TryPutItem(Item))
-            {   
-                    Destroy(this.gameObject, 0.1f);
-             
+            {
+                Destroy(this.gameObject, 0.1f);
+
             }
-          
+
         }
 
 

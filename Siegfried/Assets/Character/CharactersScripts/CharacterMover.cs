@@ -24,6 +24,7 @@ public class CharacterMover : MonoBehaviour
     private readonly int animSpeed = Animator.StringToHash("Speed");
     #endregion
 
+    public AudioSource StepsAudio;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -60,6 +61,13 @@ public class CharacterMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_charState.state == CharacterStates.Normal && !StepsAudio.isPlaying && _movement.sqrMagnitude > 0)
+        {
+            if (!StepsAudio.isPlaying) StepsAudio.Play();
+        }
+        else
+            StepsAudio.Stop();
+
         if (_charState.state == CharacterStates.Dead) return;
         _rb.MovePosition(_rb.position + _movement * _moveSpeed * Time.fixedDeltaTime);
 

@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamagePopup: {fileID: 4892710644192675248, guid: 709deb0b0f08e344f9688de061564765, type: 3}
+  Coin: {fileID: 985036326692899070, guid: 111259cfe86d4e908a9d34deb6bd9fa1, type: 3}

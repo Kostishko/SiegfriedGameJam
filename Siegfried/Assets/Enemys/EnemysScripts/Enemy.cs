@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private int _damage = 5;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _curHealth;
-    [SerializeField] public int Health
+    [SerializeField]
+    public int Health
     {
         get => _curHealth;
         private set
@@ -55,7 +56,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _playerCharacter;
     private AIDestinationSetter _AISetter;
 
-
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+    public AudioClip swordSound;
 
 
     private void Start()
@@ -138,7 +141,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (isEnemyMoving())
         {
-            if (_enemyState != EnemyState.MOVING)
+            if (_enemyState != EnemyState.MOVING && _enemyState != EnemyState.DEAD)
             {
                 _enemyState = EnemyState.MOVING;
             }
@@ -167,16 +170,19 @@ public class Enemy : MonoBehaviour, IDamageable
             isDie = true;
             _path.maxSpeed = 0;
             // проигрыш анимации смерти
+            if (_enemyState != EnemyState.DEAD)
+                Instantiate(GameAssets.instance.Coin, transform.position, Quaternion.identity);
             _enemyState = EnemyState.DEAD;
-            Destroy(this.gameObject, 0.5f);
-            
+
+            Destroy(this.gameObject, 0.3f);
+
 
         }
         DamagePopup.Create(transform.position, _damage);
 
         //проигрышь партиклей получения урона, в идеале также анимацию получения урона
 
-         _damageParticle.Play();
+        _damageParticle.Play();
 
     }
 
@@ -189,6 +195,8 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyPlum.GetComponentInChildren<MeleeEnemyProjectile>().OnEnter += OnEnterAttackPlume;
         enemyPlum.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
         Destroy(enemyPlum.gameObject, 0.3f);
+
+        audioSource.PlayOneShot(swordSound);
 
     }
 
@@ -203,7 +211,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void EnemyRangeAttack()
     {
-
+        audioSource.PlayOneShot(shootSound);
         var _bullet = Instantiate(_projectile, transform.position, Quaternion.identity);
         Vector2 _dir = new Vector2(_attackDir.x, _attackDir.y);
         _bullet.GetComponentInChildren<RangeEnemyProjectile>().Setup(_dir);
