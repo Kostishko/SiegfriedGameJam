@@ -6634,7 +6634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 0}
-  Inventory: []
   _healPotion: {fileID: 0}
   _mpPotion: {fileID: 0}
   _coin: {fileID: 0}
@@ -7070,11 +7069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180.7059
+      value: 398.537
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 48.000004
+      value: 99.151
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7106,11 +7105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 20
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7123,6 +7122,10 @@ PrefabInstance:
     - target: {fileID: 4039878759167472568, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886560085288063640, guid: c5d252584112d8f44bdb45964f853162, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.8558006
       objectReference: {fileID: 0}
     - target: {fileID: 5492847107043557323, guid: c5d252584112d8f44bdb45964f853162, type: 3}
       propertyPath: item
