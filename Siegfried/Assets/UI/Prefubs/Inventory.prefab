@@ -106,6 +106,10 @@ PrefabInstance:
       propertyPath: amount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1221980637213081311, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
+      propertyPath: keyCode
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2242607058129245068, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -228,6 +232,10 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 16a01186fe043cf47bf3e098c6eaf491, type: 2}
+    - target: {fileID: 1221980637213081311, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
+      propertyPath: keyCode
+      value: 51
+      objectReference: {fileID: 0}
     - target: {fileID: 2242607058129245068, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -350,6 +358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4039878759167472568}
     m_Modifications:
+    - target: {fileID: 1221980637213081311, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
+      propertyPath: keyCode
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 2242607058129245068, guid: 0040966f1aa525b4080a2b08c21f13e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
