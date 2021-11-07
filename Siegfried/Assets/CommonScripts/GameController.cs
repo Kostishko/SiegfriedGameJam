@@ -6,7 +6,6 @@ public  class GameController : MonoBehaviour
 {
 
     public SaveSystem.Player_data player_data;
-
     public GameObject _character;
 
 
@@ -17,6 +16,8 @@ public  class GameController : MonoBehaviour
     [SerializeField] private Item _coin;
 
     #endregion
+
+
 
 
 

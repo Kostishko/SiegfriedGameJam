@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         //проигрышь партиклей получения урона, в идеале также анимацию получения урона
 
-        // _damageParticle.Play();
+         _damageParticle.Play();
 
     }
 

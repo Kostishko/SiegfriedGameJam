@@ -41,9 +41,9 @@ public static class SaveSystem
 
     public static void PlayerSave(Player_data _data)
     {
-        string _resource = JsonUtility.ToJson(_data);
+        string _string= JsonUtility.ToJson(_data);
 
-        PlayerPrefs.SetString("Player_data", _resource);
+        PlayerPrefs.SetString("Player_data", _string);
 
     }
 
@@ -83,6 +83,52 @@ public static class SaveSystem
 
     }
 
+    public class Plot_data
+    {
+        [DataMember]
+        public string FirstLevel;
+
+        [DataMember]
+        public string SecondLevel;
+    }
+
+    public static void PlotSave (Plot_data _data)
+    {
+        string _string = JsonUtility.ToJson(_data);
+
+        PlayerPrefs.SetString("Plot_Data", _string);
+
+    }
+
+
+    public static Plot_data PlotLoad()
+    {
+        Plot_data _data = JsonUtility.FromJson<Plot_data>(PlayerPrefs.GetString("Plot_data"));
+        return _data;
+    }
+
+    public static bool isSavedPlotData()
+    {
+        if (PlayerPrefs.GetString("Plot_data") != null)
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
+    }
+
+    public static Plot_data PlotDefault()
+    {
+        Plot_data _data = new Plot_data();
+        _data.FirstLevel = "Nothing";
+        _data.SecondLevel = "Nothing";
+
+        return _data;
+
+    }
 
 
 }
