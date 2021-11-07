@@ -10,4 +10,7 @@ public class ManaPotion : Item
     {
         FindObjectOfType<CharacterState>().TakeMana(amount);
     }
+
+
+
 }

@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public  class GameController : MonoBehaviour
 {
 
     public SaveSystem.Player_data player_data;
 
     public GameObject _character;
 
+
+
+    #region Inventory
     public List<InventoryCell> Inventory;
+    [SerializeField] private Item _healPotion;
+    [SerializeField] private Item _mpPotion;
+    [SerializeField] private Item _coin;
+
+    #endregion
 
 
 
@@ -48,24 +56,42 @@ public class GameController : MonoBehaviour
 
             }
         }
-       
+
     }
 
 
-    public void AddCoin (int _cnt)
+    private void AddCoin (int _cnt)
     {
         player_data.coins += _cnt;
     }
 
 
-    public void AddHealthPotion (int _cnt)
+    private void AddHealthPotion (int _cnt)
     {
         player_data.hpPotion += _cnt;
     }
 
-    public void AddManaPotion(int _cnt)
+    private void AddManaPotion(int _cnt)
+
     {
         player_data.mnPotion += _cnt;
+    }
+
+    public void AddItemCount (int _cnt, Item _item)
+    {
+        if (_item == _coin)
+        {
+            AddCoin(_cnt);
+        }
+        if (_item == _healPotion)
+        {
+            AddHealthPotion(_cnt);
+        }
+        if (_item == _mpPotion)
+        {
+            AddManaPotion(_cnt);
+        }
+
     }
 
 
