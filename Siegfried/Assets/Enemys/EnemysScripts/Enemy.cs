@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
 
-        if (_enemyState == EnemyState.FIGHT)
+        if (_enemyState == EnemyState.FIGHT && _path.endReachedDistance > Vector2.Distance(_playerCharacter.transform.position, transform.position))
         {
 
             if (_reloadTimer >= 0)
@@ -124,7 +124,6 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 _reloadTimer = _reloadTime;
                 _attackDir = (_playerCharacter.transform.position - transform.position).normalized;
-                print(_attackDir);
                 if (isMelee)
                 {
                     EnemyMeleeAttack();
@@ -171,7 +170,10 @@ public class Enemy : MonoBehaviour, IDamageable
             _path.maxSpeed = 0;
             // проигрыш анимации смерти
             if (_enemyState != EnemyState.DEAD)
+            {
                 Instantiate(GameAssets.instance.Coin, transform.position, Quaternion.identity);
+                FindObjectOfType<SpawnController>().OnEnemyDie(this);
+            }
             _enemyState = EnemyState.DEAD;
 
             Destroy(this.gameObject, 0.3f);
