@@ -6,9 +6,10 @@ using UnityEngine;
 public class ManaPotion : Item
 {
     public int amount;
-    public override void Use()
+    public override bool Use()
     {
         FindObjectOfType<CharacterState>().TakeMana(amount);
+        return true;
     }
 
 

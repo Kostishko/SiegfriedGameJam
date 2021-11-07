@@ -24,6 +24,7 @@ public class Dialogue : MonoBehaviour
         ShowReplica(speech.StartSpeech());
 
         _panel.SetActive(true);
+        _continueButton.gameObject.SetActive(true);
 
         _continueButton.onClick.RemoveAllListeners();
         _continueButton.onClick.AddListener(() =>
@@ -40,6 +41,7 @@ public class Dialogue : MonoBehaviour
     public void StartDialgue(Speech speech)
     {
         _panel.SetActive(true);
+        _continueButton.gameObject.SetActive(false);
         StartCoroutine(StartSpeech(speech));
     }
 

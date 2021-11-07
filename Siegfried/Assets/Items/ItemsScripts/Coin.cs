@@ -6,9 +6,5 @@ using UnityEngine;
 public class Coin : Item
 {
     public int amount;
-    
-    public override void Use()
-    {
-       
-    }
+
 }
