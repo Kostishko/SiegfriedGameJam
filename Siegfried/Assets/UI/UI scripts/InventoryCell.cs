@@ -51,13 +51,13 @@ public class InventoryCell : MonoBehaviour
 
     public void Use()
     {
-        if (item)
+        if (item && item.Use())
         {
-            item.Use();
+            FindObjectOfType<GameController>().AddItemCount(-1, item);
             amount--;
             if (amount == 0) item = null;
             Refresh();
-            FindObjectOfType<GameController>().AddItemCount(-1, item);
+
         }
     }
 
