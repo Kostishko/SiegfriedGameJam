@@ -61,9 +61,10 @@ public class CharacterState : MonoBehaviour, IDamageable
         StartCoroutine(Blinking());
 
         if (Health == 0)
+        {
             OnDie?.Invoke();
-
-
+            state = CharacterStates.Dead;
+        }
     }
 
     public void TakeHeal(int heal)
@@ -116,4 +117,5 @@ public enum CharacterStates
 {
     Normal,
     MeleeAttack,
+    Dead
 }

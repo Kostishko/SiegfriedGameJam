@@ -28,6 +28,7 @@ public class CharacterFight : MonoBehaviour
     }
     private void Update()
     {
+        if (_charState.state == CharacterStates.Dead) return;
         _timeSinceMeleeAttack += Time.deltaTime;
 
         HandleAttack();
