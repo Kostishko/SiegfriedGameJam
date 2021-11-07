@@ -20,6 +20,10 @@ public class CharacterFight : MonoBehaviour
     private readonly int _animAtackRight = Animator.StringToHash("MeleeAtackRight");
     private Vector3 _attackDir;
 
+    public AudioSource audioSource;
+    public AudioClip shootSound;
+    public AudioClip swordSound;
+
     private void Start()
     {
         _machineGun = GetComponentInChildren<MachineGun>();
@@ -59,10 +63,13 @@ public class CharacterFight : MonoBehaviour
             _charState.state = CharacterStates.MeleeAttack;
             _machineGun.gameObject.SetActive(false);
             CreatePlumb(animTrigger == _animAtackLeft || animTrigger == _animAtackUp && _attackDir.x < 0);
+
+            audioSource.PlayOneShot(swordSound);
         }
         if (Input.GetMouseButtonDown(1) && _charState.state != CharacterStates.MeleeAttack)
         {
             Shoot();
+            audioSource.PlayOneShot(shootSound);
         }
     }
 

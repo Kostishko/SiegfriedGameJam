@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Health
   sprite: {fileID: 21300000, guid: 35d43ff9f17018cc0b23c31825104a0a, type: 3}
-  amount: 0
+  amount: 5
