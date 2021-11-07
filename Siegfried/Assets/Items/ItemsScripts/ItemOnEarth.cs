@@ -37,14 +37,9 @@ public class ItemOnEarth : MonoBehaviour
 
             var inventory = FindObjectOfType<Inventory>();
             if (inventory && inventory.TryPutItem(Item))
-            {
-
-                if (_controller.Inventory[i].item.itemName == Item.itemName)
-                {
-                    _controller.Inventory[i].PutItem(Item);
+            {   
                     Destroy(this.gameObject, 0.1f);
-                }
-
+             
             }
           
         }
