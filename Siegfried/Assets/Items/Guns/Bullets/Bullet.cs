@@ -23,6 +23,13 @@ public class Bullet : MonoBehaviour
             target.TakeDamage(damage);
             Destroy(gameObject);
         }
+
+        var boss = other.GetComponent<BossAfrica>();
+        if (boss != null)
+        {
+            boss.TakeDamage(0);
+            Destroy(gameObject);
+        }
     }
 
     public float GetAngleFromVectorFloat(Vector2 dir)

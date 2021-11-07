@@ -6,7 +6,6 @@ public  class GameController : MonoBehaviour
 {
 
     public SaveSystem.Player_data player_data;
-
     public GameObject _character;
 
 
@@ -18,6 +17,8 @@ public  class GameController : MonoBehaviour
     [SerializeField] private Item _coin;
 
     #endregion
+
+
 
 
 
@@ -79,15 +80,15 @@ public  class GameController : MonoBehaviour
 
     public void AddItemCount (int _cnt, Item _item)
     {
-        if (_item.itemName== _coin.itemName)
+        if (_item == _coin)
         {
             AddCoin(_cnt);
         }
-        if (_item.itemName == _healPotion.itemName)
+        if (_item == _healPotion)
         {
             AddHealthPotion(_cnt);
         }
-        if (_item.itemName == _mpPotion.itemName)
+        if (_item == _mpPotion)
         {
             AddManaPotion(_cnt);
         }
