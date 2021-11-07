@@ -56,6 +56,7 @@ public class InventoryCell : MonoBehaviour
             amount--;
             if (amount == 0) item = null;
             Refresh();
+            FindObjectOfType<GameController>().AddItemCount(-1, item);
         }
     }
 }
