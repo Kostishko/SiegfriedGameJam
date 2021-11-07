@@ -107,6 +107,7 @@ public class BossAfrica : MonoBehaviour
         if (Health == 0)
         {
             _state = BossStates.Dead;
+            Destroy(gameObject, 0.5f);
 
         }
         DamagePopup.Create(transform.position, damage);
