@@ -12,5 +12,12 @@ public class BossAfricaBullet : Bullet
             target.TakeDamage(damage);
             Destroy(gameObject);
         }
+
+        var totem = other.GetComponent<Totem>();
+        if (totem)
+        {
+            totem.Activate();
+            Destroy(gameObject);
+        }
     }
 }

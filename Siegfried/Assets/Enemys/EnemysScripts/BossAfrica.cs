@@ -7,6 +7,7 @@ public class BossAfrica : MonoBehaviour
     private BossStates _state = BossStates.Attack;
     private Transform _playerCharacter;
 
+    [SerializeField] private LayerMask _totemLayerMask;
     [SerializeField] private int _moveDistance = 2;
     [SerializeField] private float _moveSpeed = 3f;
     private Vector2 _waypoint;
@@ -35,6 +36,7 @@ public class BossAfrica : MonoBehaviour
     private Rigidbody2D _rb;
     private void Start()
     {
+        Health = _maxHealth;
         _rb = GetComponent<Rigidbody2D>();
         _playerCharacter = GameObject.FindGameObjectWithTag("Character").GetComponent<Transform>();
         _startPosition = _rb.position;
@@ -62,6 +64,9 @@ public class BossAfrica : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var angle = Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg;
+        if (angle < 0) angle += 360;
+        transform.eulerAngles = new Vector3(0, 0, angle);
         Moving();
     }
     private void HandleAttack()
@@ -70,8 +75,11 @@ public class BossAfrica : MonoBehaviour
 
         if (_shootTimer < 0)//raycast totem
         {
+            var shootDir = (_playerCharacter.position - _bulletStartPosion.position).normalized;
+            if (CheckActiveTotem(shootDir))
+                return;
             _shootTimer = _shootTime;
-            Shoot();
+            Shoot(shootDir);
             _queueCount++;
             if (_queueCount == _queueSize)
             {
@@ -81,10 +89,10 @@ public class BossAfrica : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot(Vector3 shootDir)
     {
         var _bullet = Instantiate(_bulletPrefab, _bulletStartPosion.position, Quaternion.identity);
-        var shootDir = (_playerCharacter.position - _bulletStartPosion.position).normalized;
+
         _bullet.GetComponentInChildren<Bullet>().Setup(shootDir);
     }
 
@@ -111,6 +119,13 @@ public class BossAfrica : MonoBehaviour
             _rb.MovePosition(_rb.position + dir * _moveSpeed * Time.fixedDeltaTime);
         }
 
+    }
+
+    private bool CheckActiveTotem(Vector3 shootDir)
+    {
+        RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, shootDir, 100, _totemLayerMask);
+        print(raycastHit2d.collider);
+        return raycastHit2d.collider != null && raycastHit2d.collider.GetComponent<Totem>() && raycastHit2d.collider.GetComponent<Totem>().isActive;
     }
     public enum BossStates { AFK, Reload, Attack, Dead }
 }
