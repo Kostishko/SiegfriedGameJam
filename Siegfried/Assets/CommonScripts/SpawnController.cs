@@ -119,7 +119,9 @@ public class SpawnController : MonoBehaviour
         {
             float _random = Random.Range(0, _wave.lightEnemys.Count);
             GameObject _currEnemy = _wave.lightEnemys[(int)Mathf.Round(_random)];
-            SpawnEnemy(_currEnemy);
+            float _rnd = Random.Range(0, _wave._spawnPoint.Count);
+            Transform _sp = _wave._spawnPoint[(int)Mathf.Round(_rnd)].transform;
+            SpawnEnemy(_currEnemy, _sp);
             yield return new WaitForSeconds(_wave.waitForLightSpawnEnemy * Time.deltaTime);
         }
 
@@ -127,7 +129,9 @@ public class SpawnController : MonoBehaviour
         {
             float _random = Random.Range(0, _wave.hardEnemys.Count);
             GameObject _currEnemy = _wave.hardEnemys[(int)Mathf.Round(_random)];
-            SpawnEnemy(_currEnemy);
+            float _rnd = Random.Range(0, _wave._spawnPoint.Count);
+            Transform _sp = _wave._spawnPoint[(int)Mathf.Round(_rnd)].transform;
+            SpawnEnemy(_currEnemy, _sp);
             yield return new WaitForSeconds(_wave.waitForHardSpawnEnemy * Time.deltaTime);
         }
 
@@ -139,11 +143,10 @@ public class SpawnController : MonoBehaviour
     }
 
 
-    public void SpawnEnemy(GameObject _enemy)
+    public void SpawnEnemy(GameObject _enemy, Transform _pos)
     {
-        float _random = Random.Range(0, SpawnPoints.Count);
-        Transform _sp = SpawnPoints[(int)Mathf.Round(_random)].transform;
-        var _en = Instantiate(_enemy, _sp.position, _sp.rotation);
+
+        var _en = Instantiate(_enemy, _pos.position, _pos.rotation);
     }
 
     public void AllowNextWaveStart()

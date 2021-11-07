@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
+    public List<GameObject> _spawnPoint;
+
     public List<GameObject> lightEnemys;
     public int lightEnemyCount;
 
