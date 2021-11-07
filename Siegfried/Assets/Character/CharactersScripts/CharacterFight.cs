@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CharacterFight : MonoBehaviour
 {
-    [SerializeField] float _attackOffset = 5f;
+    //[SerializeField] float _attackOffset = 5f;
     [SerializeField] float _meleeTimeBetweenAttacks = 1f;
     [SerializeField] private GameObject _plume;
 
