@@ -9,6 +9,7 @@ public  class GameController : MonoBehaviour
     public GameObject _character;
 
 
+
     #region Inventory
     public List<InventoryCell> Inventory;
     [SerializeField] private Item _healPotion;
@@ -16,6 +17,7 @@ public  class GameController : MonoBehaviour
     [SerializeField] private Item _coin;
 
     #endregion
+
 
 
 
@@ -55,7 +57,7 @@ public  class GameController : MonoBehaviour
 
             }
         }
-       
+
     }
 
 
@@ -71,6 +73,7 @@ public  class GameController : MonoBehaviour
     }
 
     private void AddManaPotion(int _cnt)
+
     {
         player_data.mnPotion += _cnt;
     }
@@ -91,6 +94,7 @@ public  class GameController : MonoBehaviour
         }
 
     }
+
 
 
 
