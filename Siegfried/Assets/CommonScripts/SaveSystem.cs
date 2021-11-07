@@ -57,12 +57,12 @@ public static class SaveSystem
     {
         if (PlayerPrefs.GetString("Player_data")!=null)
         {
-            return false;
+            return true;
         }
 
         else
         {
-            return true;
+            return false;
         }
     }
 
@@ -94,6 +94,9 @@ public static class SaveSystem
 
         [DataMember]
         public string SecondLevel;
+
+        [DataMember]
+        public int currentLevel;
     }
 
     public static void PlotSave (Plot_data _data)
@@ -101,6 +104,8 @@ public static class SaveSystem
         string _string = JsonUtility.ToJson(_data);
 
         PlayerPrefs.SetString("Plot_Data", _string);
+
+
 
     }
 
@@ -115,12 +120,12 @@ public static class SaveSystem
     {
         if (PlayerPrefs.GetString("Plot_data") != null)
         {
-            return false;
+            return true;
         }
 
         else
         {
-            return true;
+            return false;
         }
     }
 
@@ -129,6 +134,7 @@ public static class SaveSystem
         Plot_data _data = new Plot_data();
         _data.FirstLevel = "Nothing";
         _data.SecondLevel = "Nothing";
+        _data.currentLevel = 0;
 
         return _data;
 
