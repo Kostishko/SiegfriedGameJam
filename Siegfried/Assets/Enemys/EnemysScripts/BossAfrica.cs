@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAfrica : MonoBehaviour
 {
-    private BossStates _state = BossStates.Attack;
+    private BossStates _state = BossStates.AFK;
     private Transform _playerCharacter;
 
     [SerializeField] private LayerMask _totemLayerMask;
@@ -64,10 +64,13 @@ public class BossAfrica : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var angle = Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg;
-        if (angle < 0) angle += 360;
-        transform.eulerAngles = new Vector3(0, 0, angle);
-        Moving();
+        if (_state == BossStates.Reload || _state == BossStates.Attack)
+        {
+            var angle = Mathf.Atan2(_attackDir.y, _attackDir.x) * Mathf.Rad2Deg;
+            if (angle < 0) angle += 360;
+            transform.eulerAngles = new Vector3(0, 0, angle);
+            Moving();
+        }
     }
     private void HandleAttack()
     {
@@ -124,8 +127,12 @@ public class BossAfrica : MonoBehaviour
     private bool CheckActiveTotem(Vector3 shootDir)
     {
         RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, shootDir, 100, _totemLayerMask);
-        print(raycastHit2d.collider);
         return raycastHit2d.collider != null && raycastHit2d.collider.GetComponent<Totem>() && raycastHit2d.collider.GetComponent<Totem>().isActive;
+    }
+
+    public void Activate()
+    {
+        _state = BossStates.Attack;
     }
     public enum BossStates { AFK, Reload, Attack, Dead }
 }
