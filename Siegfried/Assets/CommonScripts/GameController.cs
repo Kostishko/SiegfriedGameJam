@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     public List<Speech> _barSpeeches;
 
+    public bool isFirstLevel;
 
     #region Inventory
     //public List<InventoryCell> Inventory;
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
 
-        if (SaveSystem.isSavedPlayerData())
+        if (SaveSystem.isSavedPlayerData() && isFirstLevel)
         {
             player_data = SaveSystem.PlayerLoad();
         }
@@ -64,18 +65,18 @@ public class GameController : MonoBehaviour
         if (SaveSystem.isSavedPlotData())
         {
             plot_data = SaveSystem.PlotLoad();
-         }
+        }
         else
         {
             plot_data = SaveSystem.PlotDefault();
         }
 
-        BarSpeeches();
+        Invoke(nameof(BarSpeeches), 1f);
         SetupInventory();
 
     }
 
-    public void SceneLoader ()
+    public void SceneLoader()
     {
         SaveSystem.PlayerSave(player_data);
         SaveSystem.PlotSave(plot_data);
@@ -99,7 +100,7 @@ public class GameController : MonoBehaviour
             }
 
         }
-                
+
     }
 
     public void BarSpeeches()
