@@ -15,12 +15,9 @@ public class GameController : MonoBehaviour
 
     public List<Speech> _barSpeeches;
 
-<<<<<<< Updated upstream
-    public bool isFirstLevel;
 
-=======
     private CurrenLevel _myLevel;
->>>>>>> Stashed changes
+
     #region Inventory
     //public List<InventoryCell> Inventory;
     [SerializeField] private Item _healPotion;
@@ -33,15 +30,12 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-<<<<<<< Updated upstream
 
-        if (SaveSystem.isSavedPlayerData() && isFirstLevel)
-=======
         _myLevel = FindObjectOfType<CurrenLevel>();
         
 /*
         if (SaveSystem.isSavedPlayerData())
->>>>>>> Stashed changes
+
         {
             player_data = SaveSystem.PlayerLoad();
         }
@@ -89,12 +83,10 @@ public class GameController : MonoBehaviour
 
     }
 
-<<<<<<< Updated upstream
-    public void SceneLoader()
-=======
+
 
     public void SceneLoader ()
->>>>>>> Stashed changes
+
     {
      /*   SaveSystem.PlayerSave(player_data);
         SaveSystem.PlotSave(plot_data);*/
