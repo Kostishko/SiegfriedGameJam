@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public void StartGame() {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Africa");
     }
     public void QuitGame() {
         Debug.Log("Quit!");
