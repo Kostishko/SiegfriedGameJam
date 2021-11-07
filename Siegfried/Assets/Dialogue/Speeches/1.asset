@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   replicas:
-  - "\u041D\u0443, \u043F\u0440\u0438\u0432\u0435\u0442!"
-  - "\u041D\u0443, \u043A\u0430\u043A \u0434\u0435\u043B\u0430."
-  - "\u041D\u0443, \u043F\u043E\u043A\u0430!"
-  - "\u041D\u0443, \u043F\u043E\u043A\u0430!"
-  - "\u041D\u0443, \u043F\u043E\u043A\u0430!"
+  - text: Hello
+    character: {fileID: 11400000, guid: 504f0fded66f5bb419e52680b9b0b7cf, type: 2}
+  - text: bla bla bla
+    character: {fileID: 11400000, guid: 504f0fded66f5bb419e52680b9b0b7cf, type: 2}
+  - text: bye bye
+    character: {fileID: 11400000, guid: 504f0fded66f5bb419e52680b9b0b7cf, type: 2}
