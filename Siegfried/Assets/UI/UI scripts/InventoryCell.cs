@@ -53,7 +53,7 @@ public class InventoryCell : MonoBehaviour
     {
         if (item && item.Use())
         {
-            FindObjectOfType<GameController>().AddItemCount(-1, item);
+           // FindObjectOfType<GameController>().AddItemCount(-1, item);
             amount--;
             if (amount == 0) item = null;
             Refresh();

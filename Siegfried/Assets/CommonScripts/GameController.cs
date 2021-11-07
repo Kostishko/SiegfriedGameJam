@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     public List<Speech> _barSpeeches;
 
+<<<<<<< Updated upstream
     public bool isFirstLevel;
 
     #region Inventory
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream
 
         if (SaveSystem.isSavedPlayerData() && isFirstLevel)
         {
@@ -89,12 +91,12 @@ public class GameController : MonoBehaviour
 
         else
         {
-            if (plot_data.currentLevel == 0)
+            if (_myLevel._muLevel == 0)
             {
                 SceneManager.LoadScene(2);
             }
 
-            if (plot_data.currentLevel == 1)
+            if (_myLevel._muLevel == 1)
             {
                 SceneManager.LoadScene(3);
             }

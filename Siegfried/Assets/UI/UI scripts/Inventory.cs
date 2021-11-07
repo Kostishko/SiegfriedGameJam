@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
             return false;
 
         cell.PutItem(item);
-        FindObjectOfType<GameController>().AddItemCount(1, item);
+       // FindObjectOfType<GameController>().AddItemCount(1, item);
         return true;
     }
 
